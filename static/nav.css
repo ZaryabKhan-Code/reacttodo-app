@@ -40,6 +40,7 @@ nav {
 }
 .icon {
   margin-left: 10px;
+  margin-bottom: 1px;
 }
 @media (max-width: 1000px) {
   .navbar-expand-lg .navbar-collapse {
