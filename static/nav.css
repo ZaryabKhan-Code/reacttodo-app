@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,500&display=swap");
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+.navbar {
+  border-radius: 20px;
+  margin-top: 10px;
+  opacity: 0.2px;
+}
+nav {
+  box-shadow: 0 0 10px rgba(0, 0, 0.3, 1);
+}
+#navbar-brand {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.btn_ {
+  background: #00a472;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  color: #fff;
+  border-style: none;
+  text-decoration: none;
+  font-style: normal;
+  transition: all 0.25s;
+  font-size: 1.2rem;
+}
+.btn-contant {
+  margin-left: 10px;
+}
+.navbar-expand-lg .navbar-collapse {
+  margin-left: 50px;
+}
+#nav-font {
+  font-size: 1.2rem;
+}
+.icon {
+  margin-left: 10px;
+}
+@media (max-width: 1000px) {
+  .navbar-expand-lg .navbar-collapse {
+    margin-left: 10px;
+  }
+  .btn_ {
+    width: 150px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  #nav-font {
+    font-size: 1rem;
+  }
+  #navbar-brand {
+    width: 50px;
+    height: 50px;
+  }
+}

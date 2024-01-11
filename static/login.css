@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,500&display=swap");
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+.custom-card {
+  width: 500px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.custom-card:hover {
+  transform: scale(1.02);
+}
+
+.card-body {
+  text-align: center;
+  padding: 30px;
+}
+
+.card-title {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: red;
+  border-color: red;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  border-style: none;
+  text-decoration: none;
+  font-style: normal;
+  transition: all 0.25s;
+  color: white;
+}
+
+.btn:hover,
+.btn:focus {
+  color: white;
+  background-color: red;
+  border-color: red;
+}
+.icon {
+  margin-right: 12px;
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.btn-custom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+  .custom-card {
+    width: 90%;
+  }
+}

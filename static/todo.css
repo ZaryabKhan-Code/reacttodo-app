@@ -1,0 +1,44 @@
+.custom-table {
+  max-width: 80%;
+  margin-bottom: 20px;
+}
+
+.team-member {
+  font-weight: bold;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.actions {
+  text-align: center;
+}
+
+.table {
+  font-size: 20px;
+}
+.user_record_tr {
+  height: 100px;
+}
+
+/* Make the table responsive */
+@media (max-width: 1000px) {
+  .table {
+    overflow-x: auto;
+    display: block;
+    font-size: 18px;
+  }
+}
+.task {
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+  .task {
+    text-wrap: balance;
+  }
+}
