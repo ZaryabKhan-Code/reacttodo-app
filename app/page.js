@@ -31,7 +31,13 @@ const Page = () => {
           }
         }
       } catch (error) {
-        console.error("Error checking token validity:", error);
+        if (axios.isAxiosError(error) && error.response?.status === 401) {
+          // If the /verifyToken endpoint returns 401, show the login component
+          console.log("Token verification failed. Redirecting to login...");
+          logout();
+        } else {
+          console.error("Error checking token validity:", error);
+        }
       }
     };
 
