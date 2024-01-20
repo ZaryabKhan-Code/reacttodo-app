@@ -23,6 +23,7 @@ const Todo = () => {
         "https://twiliotest-b82fb9f88880.herokuapp.com/tasks",
         {
           headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
