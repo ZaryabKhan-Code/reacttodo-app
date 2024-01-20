@@ -11,7 +11,6 @@ const Page = () => {
 
   useEffect(() => {
     const checkTokenValidity = async () => {
-      // Check token validity using Axios
       try {
         if (token) {
           const response = await axios.get(
@@ -27,7 +26,8 @@ const Page = () => {
           if (!response.data || response.status !== 200) {
             // If the token is not valid, perform logout and redirect to login
             console.log("Token is not valid. Redirecting to login...");
-            logout(); // Assuming you have a logout function in your authContext
+            logout();
+            localStorage.removeItem("token");
           }
         }
       } catch (error) {
@@ -35,6 +35,7 @@ const Page = () => {
           // If the /verifyToken endpoint returns 401, show the login component
           console.log("Token verification failed. Redirecting to login...");
           logout();
+          localStorage.removeItem("token");
         } else {
           console.error("Error checking token validity:", error);
         }
