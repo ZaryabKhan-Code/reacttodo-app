@@ -27,6 +27,7 @@ const Page = () => {
             // If the token is not valid, perform logout and redirect to login
             console.log("Token is not valid. Redirecting to login...");
             localStorage.removeItem("token");
+            checkTokenValidity();
           }
         }
       } catch (error) {
@@ -38,6 +39,7 @@ const Page = () => {
         } else {
           console.error("Error checking token validity:", error);
           localStorage.removeItem("token");
+          checkTokenValidity();
         }
       }
     };
