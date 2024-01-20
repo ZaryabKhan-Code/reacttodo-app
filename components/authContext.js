@@ -1,6 +1,6 @@
 "use client";
+import axios from "axios";
 import React, { useState, useEffect, createContext, useContext } from "react";
-
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
