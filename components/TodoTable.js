@@ -3,7 +3,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import "../static/todo.css";
 import { FaCheck, FaTrash } from "react-icons/fa";
 
-const TodoTable = ({ users }) => {
+const TodoTable = ({ users, onDeleteTask }) => {
   return (
     <div className="container mt-3 custom-table">
       <table className="table">
@@ -38,7 +38,11 @@ const TodoTable = ({ users }) => {
                 </td>
                 <td className="align-middle">
                   <FaCheck className="icon" title="Complete" />
-                  <FaTrash className="icon" title="Delete" />
+                  <FaTrash
+                    className="icon"
+                    title="Delete"
+                    onClick={() => onDeleteTask(user._id)}
+                  />
                 </td>
               </tr>
             ))}

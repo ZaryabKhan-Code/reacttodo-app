@@ -34,6 +34,24 @@ const Todo = () => {
     }
   };
 
+  const deleteTask = async (taskId) => {
+    try {
+      await axios.delete(
+        `https://twiliotest-b82fb9f88880.herokuapp.com/tasks/${taskId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // Fetch updated tasks after deleting a task
+      fetchTasks();
+    } catch (error) {
+      console.error("Error deleting task:", error.message);
+    }
+  };
+
   const addTodo = async (e) => {
     e.preventDefault();
 
@@ -121,7 +139,7 @@ const Todo = () => {
           </div>
         </form>
       </div>
-      <TodoTable users={todos} />
+      <TodoTable users={todos} onDeleteTask={deleteTask} />
     </>
   );
 };
