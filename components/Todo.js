@@ -11,7 +11,6 @@ const Todo = () => {
   const [task, setTask] = useState("");
   const [taskMember, setTaskMember] = useState("");
   const [priority, setPriority] = useState("");
-  console.log(token);
   useEffect(() => {
     // Fetch tasks when the component mounts
     fetchTasks();
