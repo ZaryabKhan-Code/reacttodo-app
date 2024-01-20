@@ -50,7 +50,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await axios.get("https://twiliotest-b82fb9f88880.herokuapp.com/logout");
     setToken("");
     if (typeof window !== "undefined") {
       localStorage.removeItem("token");
