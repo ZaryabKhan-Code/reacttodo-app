@@ -37,10 +37,10 @@ const Page = () => {
           localStorage.removeItem("token");
         } else {
           console.error("Error checking token validity:", error);
+          localStorage.removeItem("token");
         }
       }
     };
-
     checkTokenValidity();
   }, [token]);
 
