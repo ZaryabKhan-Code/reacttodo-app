@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import axios from "axios";
 
 const Page = () => {
-  const { token, logout } = useAuth();
+  const { token } = useAuth();
 
   useEffect(() => {
     const checkTokenValidity = async () => {
@@ -26,7 +26,6 @@ const Page = () => {
           if (!response.data || response.status !== 200) {
             // If the token is not valid, perform logout and redirect to login
             console.log("Token is not valid. Redirecting to login...");
-            logout();
             localStorage.removeItem("token");
           }
         }
@@ -34,7 +33,7 @@ const Page = () => {
         if (axios.isAxiosError(error) && error.response?.status === 401) {
           // If the /verifyToken endpoint returns 401, show the login component
           console.log("Token verification failed. Redirecting to login...");
-          logout();
+
           localStorage.removeItem("token");
         } else {
           console.error("Error checking token validity:", error);
@@ -43,7 +42,7 @@ const Page = () => {
     };
 
     checkTokenValidity();
-  }, [token, logout]);
+  }, [token]);
 
   return (
     <>
