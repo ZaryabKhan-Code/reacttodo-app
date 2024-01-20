@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Login from "@/components/Login";
 import Todo from "@/components/Todo";
 import { useAuth } from "@/components/authContext";
 import { Suspense } from "react";
 import axios from "axios";
+
 const Page = () => {
   const { token } = useAuth();
-  const [isValidToken, setIsValidToken] = useState(true);
 
   useEffect(() => {
     const checkTokenValidity = async () => {
@@ -24,22 +24,20 @@ const Page = () => {
           );
 
           if (!response.data || response.status !== 200) {
-            // If the token is not valid, set isValidToken to false
+            // If the token is not valid, perform logout and redirect to login
             console.log("Token is not valid. Redirecting to login...");
             localStorage.removeItem("token");
-            setIsValidToken(false);
           }
         }
       } catch (error) {
         if (axios.isAxiosError(error) && error.response?.status === 401) {
-          // If the /verifyToken endpoint returns 401, set isValidToken to false
+          // If the /verifyToken endpoint returns 401, show the login component
           console.log("Token verification failed. Redirecting to login...");
+
           localStorage.removeItem("token");
-          setIsValidToken(false);
         } else {
           console.error("Error checking token validity:", error);
           localStorage.removeItem("token");
-          setIsValidToken(false);
         }
       }
     };
@@ -48,9 +46,13 @@ const Page = () => {
 
   return (
     <>
-      <Suspense fallback={<h2>🌀 Loading...</h2>}>
-        {isValidToken ? <Todo /> : <Login />}
-      </Suspense>
+      {token ? (
+        <Suspense fallback={<h2>🌀 Loading...</h2>}>
+          <Todo />
+        </Suspense>
+      ) : (
+        <Login />
+      )}
     </>
   );
 };
