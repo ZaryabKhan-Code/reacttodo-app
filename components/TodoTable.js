@@ -14,33 +14,35 @@ const TodoTable = ({ users }) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          {users.map((user, index) => (
-            <tr className="user_record_tr" key={index}>
-              <td className="align-middle">
-                <div className="d-flex align-items-center">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                    alt="Avatar"
-                    className="avatar mr-2"
-                    style={{ height: "auto", width: 45 }}
-                  />
-                  <span className="ms-2 mt-1">{user.assign_to}</span>
-                </div>
-              </td>
-              <td className="align-middle task">{user.task}</td>
-              <td className="align-middle">
-                <span className={`badge bg-${user.PriorityColor} mb-1`}>
-                  {user.priority}
-                </span>
-              </td>
-              <td className="align-middle">
-                <FaCheck className="icon" title="Complete" />
-                <FaTrash className="icon" title="Delete" />
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <tbody>
+            {users.map((user, index) => (
+              <tr className="user_record_tr" key={index}>
+                <td className="align-middle">
+                  <div className="d-flex align-items-center">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                      alt="Avatar"
+                      className="avatar mr-2"
+                      style={{ height: "auto", width: 45 }}
+                    />
+                    <span className="ms-2 mt-1">{user.assign_to}</span>
+                  </div>
+                </td>
+                <td className="align-middle task">{user.task}</td>
+                <td className="align-middle">
+                  <span className={`badge bg-${user.PriorityColor} mb-1`}>
+                    {user.priority}
+                  </span>
+                </td>
+                <td className="align-middle">
+                  <FaCheck className="icon" title="Complete" />
+                  <FaTrash className="icon" title="Delete" />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Suspense>
       </table>
     </div>
   );

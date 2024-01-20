@@ -120,9 +120,7 @@ const Todo = () => {
           </div>
         </form>
       </div>
-      <Suspense fallback={<h2>Loading...</h2>}>
         <TodoTable users={todos} />
-      </Suspense>
     </>
   );
 };
