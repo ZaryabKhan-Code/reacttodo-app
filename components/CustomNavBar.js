@@ -5,10 +5,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSignInAlt } from "react-icons/fa";
 import "../static/nav.css";
 import Image from "next/image";
+import { useAuth } from "./authContext";
 
 const CustomNavBar = () => {
   const [activeNavItem, setActiveNavItem] = useState("home");
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { token, logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+  };
 
   useEffect(() => {
     setActiveNavItem(getNavItemFromPath(window.location.pathname));
@@ -89,12 +94,23 @@ const CustomNavBar = () => {
               </div>
 
               <div className="navbar-nav ms-auto text-center">
-                <Link className="btn_" href="/">
-                  <span className="btn-contant">
-                    Sign In
-                    <FaSignInAlt className="icon" />
-                  </span>
-                </Link>
+                {token ? (
+                  // If token exists, show the Logout button
+                  <button className="btn_" onClick={handleLogout}>
+                    <span className="btn-contant">
+                      Logout
+                      <FaSignInAlt className="icon" />
+                    </span>
+                  </button>
+                ) : (
+                  // If no token, show the Sign In button
+                  <Link className="btn_" href="/">
+                    <span className="btn-contant">
+                      Sign In
+                      <FaSignInAlt className="icon" />
+                    </span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>
