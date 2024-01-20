@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { Suspense, useEffect, useState } from "react";
 import "../static/todo.css";
 import { FaCheck, FaTrash } from "react-icons/fa";
 
