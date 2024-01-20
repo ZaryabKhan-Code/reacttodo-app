@@ -48,13 +48,9 @@ const Page = () => {
 
   return (
     <>
-      {isValidToken ? (
-        <Suspense fallback={<h2>🌀 Loading...</h2>}>
-          {token ? <Todo /> : null}
-        </Suspense>
-      ) : (
-        <Login />
-      )}
+      <Suspense fallback={<h2>🌀 Loading...</h2>}>
+        {isValidToken ? <Todo /> : <Login />}
+      </Suspense>
     </>
   );
 };
